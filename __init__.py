@@ -89,7 +89,7 @@ class ChatGPTSkill(FallbackSkill):
         utterance = message.data['utterance']
         prompt = self.get_prompt(utterance)
         # TODO - params from skill settings
-        response = self.chatgpt.create(prompt=prompt, engine="davinci", temperature=0.85,
+        response = self.chatgpt.create(prompt=prompt, engine="text-davinci-003", temperature=0.85,
                                        top_p=1, frequency_penalty=0,
                                        presence_penalty=0.7, best_of=2, max_tokens=100, stop="\nHuman: ")
         answer = response.choices[0].text.split("Human: ")[0].split("AI: ")[0].strip()
